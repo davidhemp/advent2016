@@ -1,0 +1,7 @@
+/home/david/Dropbox/personal/AdventofCode2016/cpp/1/part2.cpp: In function ‘int main()’:
+/home/david/Dropbox/personal/AdventofCode2016/cpp/1/part2.cpp:10:32: error: ‘>>’ should be ‘> >’ within a nested template argument list
+     std::vector<std::vector<int>> visted (1000, std::vector<int> (2,0));
+                                ^
+/home/david/Dropbox/personal/AdventofCode2016/cpp/1/part2.cpp:29:20: error: ‘stoi’ is not a member of ‘std’
+         int move = std::stoi(stepString.erase(0,1));
+                    ^
