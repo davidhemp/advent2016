@@ -4,7 +4,19 @@
 #include <stdlib.h>
 #include <vector>
 
+#include <sys/time.h>
+typedef unsigned long long timestamp_t;
+
+static timestamp_t
+get_timestamp ()
+{
+  struct timeval now;
+  gettimeofday (&now, NULL);
+  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
+}
+
 int main(){
+    timestamp_t t0 = get_timestamp();
     signed int y = 0;
     signed int x = 0;
     int yRepeats = 0;
@@ -48,4 +60,7 @@ int main(){
         int n = (x+1) +(y*3);
         std::cout << x << ", " << y << ": " << n << std::endl;
     }
+    timestamp_t t1 = get_timestamp();
+    double secs = (t1 - t0) / 1000000.0L;
+    std::cout << secs << " seconds" << std::endl;
 }

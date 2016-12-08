@@ -3,8 +3,20 @@
 #include <sstream>
 #include <stdlib.h>
 #include <vector>
+#include <sys/time.h>
+
+typedef unsigned long long timestamp_t;
+
+static timestamp_t
+get_timestamp ()
+{
+  struct timeval now;
+  gettimeofday (&now, NULL);
+  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
+}
 
 int main(){
+    timestamp_t t0 = get_timestamp();    
     std::vector<int> currentDigit = {1,3};
     // Diamond shape
     std::vector<std::vector<int>> forbidden=  { {3,0},
@@ -54,4 +66,7 @@ int main(){
         }
         std::cout << currentDigit[0] << ", " << currentDigit[1] << std::endl;
     }
+    timestamp_t t1 = get_timestamp();
+    double secs = (t1 - t0) / 1000000.0L;
+    std::cout << secs << " seconds" << std::endl;
 }
