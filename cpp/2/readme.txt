@@ -21,4 +21,5 @@ Part2
 
 Oh Geez. The best way I could come up with is generating a vector/list of
 disallowed edge squares and preventing the move if the curser attempted to move
-into one of them. 
+into one of them. For this I just used the full movement list as it is just as
+quick. 
