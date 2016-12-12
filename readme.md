@@ -5,23 +5,31 @@ http://adventofcode.com/2016
 ## Day 1 ##
 |            |Part 1         | Part 2 |
 |------------|---------------|--------|
-|Python 2.75 | 0.9 μsec      | 20 μsec|
-|C++ 11      | 0.3 μsec      | 41 μsec|
+|Python 2.7.3| 0.9 msec      | 20 msec|
+|C++ 11      | 0.3 msec      | 41 msec|
 
 ## Day 2 ##
 |            |Part 1         | Part 2 |
 |------------|---------------|--------|
-|Python 2.75 | - μsec        | - μsec |
-|C++ 11      | 0.2 μsec      | 8 μsec |
+|Python 2.7.3| - msec        | - msec |
+|C++ 11      | 0.2 msec      | 8 msec |
 
 ## Day 3 ##
 |            |Part 1         | Part 2 |
 |------------|---------------|--------|
-|Python 2.75 | 4 μsec        | 7 μsec |
-|C++ 11      | 11 μsec       | 8 μsec |
+|Python 2.7.3| 4 msec        | 7 msec |
+|C++ 11      | 11 msec       | 8 msec |
 
 ## Day 4 ##
 |            |Part 1         | Part 2 |
 |------------|---------------|--------|
-|Python 2.75 | - μsec        | - μsec |
-|C++ 11      | - μsec        | - μsec |
+|Python 2.7.3| 15 msec       | 26 msec|
+|pypy 2.2.1  | 11 msec       | 11 msec|
+|C++ 11      | - msec        | - msec |
+
+## Day 5 ##
+|            |Part 1         | Part 2 |
+|------------|---------------|--------|
+|Python 2.7.3| - msec        | - msec |
+|pypy 2.2.1  | - msec        | - msec |
+|C++ 11      | 11.8 sec      |10.8 sec|
