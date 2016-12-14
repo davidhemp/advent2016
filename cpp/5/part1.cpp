@@ -14,10 +14,8 @@ get_timestamp ()
   return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
 }
 
-int main()
-{
-    using namespace std;
-    timestamp_t t0 = get_timestamp();
+using namespace std;
+int run(){
     // char doorID[] = "abc";
     char doorID[] = "uqwqemis";
     int intAdded = 0;
@@ -49,8 +47,23 @@ int main()
         zeroCount = 0;
         intAdded++;
     }
-    printf("Result: %s\n", result);
+    // printf("Result: %s\n", result);
+
+}
+
+int main(){
+    int counts = 1000;
+    double secs;
+    double ave = 0.0;
+    timestamp_t t0 = get_timestamp();
     timestamp_t t1 = get_timestamp();
-    double secs = (t1 - t0) / 1000000.0L;
-    cout << secs << " seconds" <<endl;
+    for (int i = 0; i < counts; ++i){
+        t0 = get_timestamp();
+        run();
+        t1 = get_timestamp();
+        secs = (t1 - t0) / 1000000.0L;
+        ave += secs;
+    }
+    ave = ave/counts;
+    cout << ave << " seconds" <<endl;
 }

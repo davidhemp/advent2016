@@ -31,5 +31,10 @@ http://adventofcode.com/2016
 |            |Part 1         | Part 2 |
 |------------|---------------|--------|
 |Python 2.7.3| - msec        | - msec |
-|pypy 2.2.1  | - msec        | - msec |
 |C++ 11      | 11.8 sec      |10.8 sec|
+
+## Day 6 ##
+|            |Part 1         | Part 2 |
+|------------|---------------|--------|
+|Python 2.7.3| - msec        | - msec |
+|C++ 11      | 3.1 msec      |4.5 msec|
