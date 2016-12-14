@@ -1,11 +1,8 @@
 #include <iostream>
-#include <stdio.h>
 #include <string>
 #include <algorithm>
 #include <vector>
 #include <fstream>
-#include <sstream>
-#include <set>
 
 #include <sys/time.h>
 typedef unsigned long long timestamp_t;
@@ -19,7 +16,7 @@ get_timestamp ()
 }
 
 using namespace std;
-int run(){
+int run(vector<char>& finalWord){
     //load data
     vector<vector<char>> letters(8, vector<char> (1000, '-'));
     string line;
@@ -38,7 +35,6 @@ int run(){
     char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
     int counts_old = 0;
     int counts_new = 0;
-    vector<char> finalWord (8, '-');
     for (int i = 0; i < 8; ++i){
         for (int j = 0; j < 26; ++j){
             counts_new = count( letters[i].begin(),
@@ -51,26 +47,27 @@ int run(){
         }
         counts_old = 0;
     }
-    //output solution
-    for (int i = 0; i < 8; ++i){
-        // cout << finalWord[i];
-    }
-    // cout << endl;
 }
 
 int main(){
-    int counts = 5;
+    vector<char> finalWord (8, '-');
+    int counts = 1000;
     double secs;
     double ave = 0.0;
     timestamp_t t0 = get_timestamp();
     timestamp_t t1 = get_timestamp();
     for (int i = 0; i < counts; ++i){
         t0 = get_timestamp();
-        run();
+        run(finalWord);
         t1 = get_timestamp();
         secs = (t1 - t0) / 1000000.0L;
         ave += secs;
     }
     ave = ave/counts;
+    //output solution
+    for (int i = 0; i < 8; ++i){
+        cout << finalWord[i];
+    }
+    cout << endl;
     cout << ave << " seconds" <<endl;
 }
