@@ -19,6 +19,7 @@ http://adventofcode.com/2016
 |------------|---------------|--------|
 |Python 2.7.3| 4 msec        | 7 msec |
 |C++ 11      | 11 msec       | 8 msec |
+|C++ 11 V2 -O2 | 1.8 msec      | 8 msec |
 
 ## Day 4 ##
 |            |Part 1         | Part 2 |
