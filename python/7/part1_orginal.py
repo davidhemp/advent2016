@@ -1,4 +1,5 @@
 import re
+#60 msecs
 
 def search(teststring):
     for i in range(len(teststring)-3):
@@ -13,6 +14,7 @@ def run():
     n = 0
     with open('input.txt') as f:
         for line in f:
+
             brackets = []
             passed = []
             pos = 0
