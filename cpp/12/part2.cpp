@@ -64,7 +64,7 @@ int main(){
         map<string, int> regs;
         regs["a"] = 0;
         regs["b"] = 0;
-        regs["c"] = 0;
+        regs["c"] = 1;
         regs["d"] = 0;
         while (cursor < program.size()){
             // cout << cursor+1 << endl;
@@ -72,6 +72,6 @@ int main(){
             cursor++;
         }
         txtFile.close();
-        // cout << regs["a"] << endl;
+        cout << regs["a"] << endl;
     }
 }
