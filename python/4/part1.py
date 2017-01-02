@@ -24,3 +24,4 @@ def run():
                 n += 1
                 sector_sum += int(sector_id)
     print(n, sector_sum)
+run()

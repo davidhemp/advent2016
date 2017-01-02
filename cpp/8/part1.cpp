@@ -76,13 +76,13 @@ int run(int& num){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 50; j++){
                 if (grid[i][j] == 1){
-                    // cout << "A";
+                    cout << "A";
                     num++;
                 } else {
-                    // cout << " ";
+                    cout << " ";
                 }
             }
-        // cout << endl;
+        cout << endl;
         }
     }
 }
@@ -90,7 +90,7 @@ int run(int& num){
 
 int main(){
     int num = 0;
-    int counts = 1000;
+    int counts = 1;
     timestamp_t t0 = get_timestamp();
     timestamp_t t1 = get_timestamp();
     double secs = 0;
