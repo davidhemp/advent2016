@@ -2,13 +2,9 @@
 #include <cstdio>
 #include <vector>
 #include <bitset>
-#include <algorithm>
 #include <map>
-//Why can't you string switch!! lol
-
 
 using namespace std;
-
 
 struct point{
     int x;
@@ -60,7 +56,6 @@ int main(){
                 if (it == level.end()){
                     level[a.x+a.y*100] = i;
                     next.push_back(a);
-                } else {
                 }
             }
         }
