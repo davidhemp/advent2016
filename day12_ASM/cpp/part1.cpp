@@ -5,12 +5,12 @@
 #include <map>
 #include <vector>
 #include <locale>
-//Why can't you string switch!! lol
-
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
-int run(string& line, map<string, int>& regs, int& cursor){
+int runLine(string& line, map<string, int>& regs, int& cursor){
     string command;
     string fromReg;
     string toReg;
@@ -51,7 +51,7 @@ int run(string& line, map<string, int>& regs, int& cursor){
     }
 }
 
-int main(){
+void run(){
     ifstream txtFile("input.txt");
     if(txtFile.is_open()){
         string line;
@@ -68,10 +68,22 @@ int main(){
         regs["d"] = 0;
         while (cursor < program.size()){
             // cout << cursor+1 << endl;
-            run(program[cursor], regs, cursor);
+            runLine(program[cursor], regs, cursor);
             cursor++;
         }
         txtFile.close();
-        // cout << regs["a"] << endl;
+        cout << regs["a"] << endl;
     }
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

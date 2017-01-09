@@ -2,20 +2,12 @@
 #include <iostream>
 #include <string.h>
 #include <openssl/md5.h>
-
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
+#include <chrono>
 
 using namespace std;
-int run(){
+using namespace std::chrono;
+
+void function(){
     // char doorID[] = "abc";
     char doorID[] = "uqwqemis";
     int intAdded = 0;
@@ -51,19 +43,14 @@ int run(){
 
 }
 
-int main(){
-    int counts = 1000;
-    double secs;
-    double ave = 0.0;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    for (int i = 0; i < counts; ++i){
-        t0 = get_timestamp();
-        run();
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    ave = ave/counts;
-    cout << ave << " seconds" <<endl;
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

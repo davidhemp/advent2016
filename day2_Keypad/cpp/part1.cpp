@@ -3,33 +3,25 @@
 #include <sstream>
 #include <stdlib.h>
 #include <vector>
+#include <chrono>
 
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
+using namespace std;
+using namespace std::chrono;
 
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
-
-int main(){
-    timestamp_t t0 = get_timestamp();
+void function(){
     signed int y = 0;
     signed int x = 0;
     int yRepeats = 0;
     int xRepeats = 0;
-    std::string digits [5];
+    string digits [5];
     digits[0] = "RRDDLDDULDLLDU";
     digits[1] = "UURRLDDUDRUURUDLLDLDLURDLULDRLLLULLLUDLLDLD";
     digits[2] = "LLRRLLRDDULLDLDLDDLDLDULURRDURURDRDRRDLR";
     digits[3] = "DDRRRRLRLRDRURUDDRDLDRURLULDDL";
     digits[4] = "UUDDDLUDULRUUUUDRLDDD";
-    std::string currentDigit;
+    string currentDigit;
     for (int j = 0; j < 5; j++){
-        std::string digit = digits[j];
+        string digit = digits[j];
         for (int i = 0; i < digit.length(); i++){
             currentDigit = digit[i];
             if (currentDigit.compare("U") == 0){
@@ -58,9 +50,18 @@ int main(){
             }
         }
         int n = (x+1) +(y*3);
-        std::cout << x << ", " << y << ": " << n << std::endl;
+        cout << x << ", " << y << ": " << n << endl;
     }
-    timestamp_t t1 = get_timestamp();
-    double secs = (t1 - t0) / 1000000.0L;
-    std::cout << secs << " seconds" << std::endl;
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

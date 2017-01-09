@@ -4,34 +4,25 @@
 #include <sstream>
 #include <vector>
 #include <regex>
-
+#include <chrono>
 //Why can't you string switch!! lol
 
 using namespace std;
+using namespace std::chrono;
 
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
-
-int run(int& num){
-    string line;
-    string section;
-    int x;
-    int y;
+void run(){
     ifstream txtFile("input.txt");
-    smatch match;
-    int tempInt;
     if(txtFile.is_open()){
+        int num = 0;
+        int x;
+        int y;
+        string line;
+        string section;
+        smatch match;
         vector<vector<int>> grid(6, vector<int>(50, 0));
         regex rectRGX("rect (\\d+)x(\\d+)");
         regex rotateRGX("rotate (column|row) (x|y)=(\\d+) by (\\d+)");
+        int tempInt;
         while(txtFile.good()){
                 // Line editting
                 getline(txtFile, line);
@@ -87,24 +78,14 @@ int run(int& num){
     }
 }
 
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
-int main(){
-    int num = 0;
-    int counts = 1;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    double secs = 0;
-    double ave = 0;
-    for (int i = 0; i < counts; ++i){
-        num = 0;
-        t0 = get_timestamp();
-        run(num);
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    ave = ave/counts;
-    cout << ave << " seconds" <<endl;
-    //output solution
-    cout << num << endl;
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

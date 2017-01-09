@@ -4,8 +4,10 @@
 #include <regex>
 #include <list>
 #include <openssl/md5.h>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 struct key{
     int x;
@@ -14,7 +16,7 @@ struct key{
     bool used;
 };
 
-int main(){
+void run(){
     char salt[] = "ihaygndm";
     // char salt[] = "abc";
     int intAdded = 0;
@@ -48,6 +50,7 @@ int main(){
                             if (k.x > lastKey){
                                 lastKey = k.x;
                             }
+                            // couts the keys, commented out for speed test
                             // cout << k.letter << " found at "<< k.x;
                             // cout << " in "<< k.hash << ", confirmed in ";
                             // cout << intAdded << " with " << mdString << endl;
@@ -58,6 +61,7 @@ int main(){
                 key k = {intAdded, mdString, match[1], false};
                 keyList.push_back(k);
             }
+            // Deleting the key once used messed with the it
             // for (auto it = keyList.begin(); it != keyList.end(); ++it){
             //     key k = *it;
             //     if (k.used){
@@ -68,4 +72,16 @@ int main(){
         intAdded++;
     }
     printf("%i\n", lastKey);
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

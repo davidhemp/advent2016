@@ -3,8 +3,10 @@
 #include <vector>
 #include <bitset>
 #include <map>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 struct point{
     int x;
@@ -36,7 +38,7 @@ vector<point> adj(int x, int y){
     return allowedMoves;
 }
 
-int main(){
+void run(){
     point s = {31, 39};
     int e = 1+1*100;
     vector<point> frontier;
@@ -66,4 +68,16 @@ int main(){
         frontier = next;
         i++;
     }
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

@@ -3,20 +3,13 @@
 #include <algorithm>
 #include <vector>
 #include <fstream>
-
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
+#include <chrono>
 
 using namespace std;
-int run(vector<char>& finalWord){
+using namespace std::chrono;
+
+void function(){
+    vector<char> finalWord (8, '-');
     //load data
     vector<vector<char>> letters(8, vector<char> (1000, '-'));
     string line;
@@ -47,27 +40,21 @@ int run(vector<char>& finalWord){
         }
         counts_old = 0;
     }
-}
-
-int main(){
-    vector<char> finalWord (8, '-');
-    int counts = 1000;
-    double secs;
-    double ave = 0.0;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    for (int i = 0; i < counts; ++i){
-        t0 = get_timestamp();
-        run(finalWord);
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    ave = ave/counts;
     //output solution
     for (int i = 0; i < 8; ++i){
         cout << finalWord[i];
     }
     cout << endl;
-    cout << ave << " seconds" <<endl;
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

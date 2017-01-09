@@ -15,5 +15,5 @@ def run():
                 final_word[n] = l
                 old_count = new_count
         old_count = 1000
-    # print(final_word)
+    print(final_word)
 run()

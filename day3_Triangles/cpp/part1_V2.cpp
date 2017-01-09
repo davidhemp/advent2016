@@ -5,20 +5,13 @@
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
-
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
+#include <chrono>
 
 using namespace std;
-int run(int& num_tri){
+using namespace std::chrono;
+
+void function(){
+    int num_tri = 0;
     string line;
     string item;
     ifstream f ("input.txt");
@@ -36,28 +29,20 @@ int run(int& num_tri){
             }
         }
         f.close();
+        cout << num_tri << endl;
     } else {
         cout << "Can not open file";
     }
 }
 
-int main(){
-    int num_tri = 0;
-    int counts = 1000;
-    double secs;
-    double ave = 0.0;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    for (int i = 0; i < counts; ++i){
-        num_tri = 0;
-        t0 = get_timestamp();
-        run(num_tri);
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    // output solution
-    cout << num_tri << endl;
-    ave = ave/counts;
-    cout << ave << " seconds" <<endl;
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

@@ -5,20 +5,13 @@
 #include <set>
 #include <vector>
 
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
-int run(int& xx, int& yy){
-    timestamp_t t0 = get_timestamp();
+void function(){
+    int xx;
+    int yy;
     int coords[4] = {0, 0, 0, 0};
     signed int currentDirection = 0;
     vector<int> step (2,0);
@@ -65,32 +58,23 @@ int run(int& xx, int& yy){
             }
         }
         f.close();
+        cout << "x: " << xx << endl;
+        cout << "y: " << yy << endl;
+        cout << "Distance: " << abs(xx) + abs(yy) << endl;
     } else {
         cout << "Can not open file";
     }
 }
 
-int main(){
-    int xx;
-    int yy;
-    int counts = 10000;
-    double secs;
-    double ave = 0.0;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    for (int i = 0; i < counts; ++i){
-        xx = 0;
-        yy = 0;
-        t0 = get_timestamp();
-        run(xx, yy);
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    // output solution
-    cout << "x: " << xx << endl;
-    cout << "y: " << yy << endl;
-    cout << "Distance: " << abs(xx) + abs(yy) << endl;
-    ave = ave/counts;
-    cout << ave << " seconds" << endl;
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

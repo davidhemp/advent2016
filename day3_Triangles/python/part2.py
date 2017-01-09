@@ -14,5 +14,5 @@ def run():
                         n += 1
                 values = [[],[],[]]
                 j = 0
-    print(n)
+    # print(n)
 #983

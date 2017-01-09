@@ -6,5 +6,6 @@ def run():
             items = sorted([int(line[:5]), int(line[5:10]), int(line[10:])])
             if (items[0] + items[1] > items[2]):
                 n += 1
-    print(n)
+    # print(n)
 #983
+# run()

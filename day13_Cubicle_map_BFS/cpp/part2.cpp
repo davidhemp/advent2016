@@ -4,11 +4,10 @@
 #include <bitset>
 #include <algorithm>
 #include <map>
-//Why can't you string switch!! lol
-
+#include <chrono>
 
 using namespace std;
-
+using namespace std::chrono;
 
 struct point{
     int x;
@@ -40,7 +39,7 @@ vector<point> adj(int x, int y){
     return allowedMoves;
 }
 
-int main(){
+void run(){
     point s = {1, 1};
     vector<point> frontier;
     frontier.push_back(s);
@@ -66,5 +65,17 @@ int main(){
         frontier = next;
         i++;
     }
-    printf("%i\n", level.size());
+    cout << level.size() << endl;
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

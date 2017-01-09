@@ -4,21 +4,11 @@
 #include <sstream>
 #include <vector>
 #include <regex>
+#include <chrono>
 //Why can't you string switch!! lol
 
 using namespace std;
-
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
-
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
-
+using namespace std::chrono;
 struct bot{
     int number;
     vector<int> chips;
@@ -26,9 +16,10 @@ struct bot{
     int low;
 };
 
-int run(int& num){
+int run(){
     ifstream txtFile("testinput.txt");
     if(txtFile.is_open()){
+        int num = 0;
         vector<bot> bots(220);
         for (int i =0; i<220; ++i){
             bots[i].number = i;
@@ -54,24 +45,14 @@ int run(int& num){
     }
 }
 
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    run();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
-int main(){
-    int num = 0;
-    int counts = 1;
-    timestamp_t t0 = get_timestamp();
-    timestamp_t t1 = get_timestamp();
-    double secs = 0;
-    double ave = 0;
-    for (int i = 0; i < counts; ++i){
-        num = 0;
-        t0 = get_timestamp();
-        run(num);
-        t1 = get_timestamp();
-        secs = (t1 - t0) / 1000000.0L;
-        ave += secs;
-    }
-    ave = ave/counts;
-    cout << ave << " seconds" <<endl;
-    //output solution
-    cout << num << endl;
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

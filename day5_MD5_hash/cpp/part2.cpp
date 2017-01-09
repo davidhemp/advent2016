@@ -4,24 +4,14 @@
 #include <string>
 #include <openssl/md5.h>
 #include <sstream>
+#include <chrono>
 
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
+using namespace std;
+using namespace std::chrono;
 
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
-
-int main()
-{
-    using namespace std;
-    timestamp_t t0 = get_timestamp();
-    char doorID[] = "abc";
-    // char doorID[] = "uqwqemis";
+void function(){
+    // char doorID[] = "abc";
+    char doorID[] = "uqwqemis";
     int intAdded = 0;
     char str[20];
     unsigned char digest[MD5_DIGEST_LENGTH];
@@ -56,7 +46,16 @@ int main()
         intAdded++;
     }
     printf("Result: %s\n", result);
-    timestamp_t t1 = get_timestamp();
-    double secs = (t1 - t0) / 1000000.0L;
-    cout << secs << " seconds" <<endl;
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }
