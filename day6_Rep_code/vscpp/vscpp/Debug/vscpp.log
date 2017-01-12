@@ -1,0 +1,4 @@
+﻿  vscpp.cpp
+e:\dropbox\personal\advent2016\day6_rep_code\vscpp\vscpp\vscpp.cpp(24): warning C4018: '<': signed/unsigned mismatch
+  vscpp.vcxproj -> E:\Dropbox\personal\advent2016\day6_Rep_code\vscpp\Debug\vscpp.exe
+  vscpp.vcxproj -> E:\Dropbox\personal\advent2016\day6_Rep_code\vscpp\Debug\vscpp.pdb (Full PDB)

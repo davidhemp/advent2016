@@ -13,7 +13,7 @@ void function(){
     int y = 0;
     int coords[4] = {0, 0, 0, 0};
     signed int currentDirection = 0;
-    std::string stepString;
+    string stepString;
     string line;
     string move;
     ifstream f ("input.txt");

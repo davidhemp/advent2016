@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  vscpp.cpp
+vscpp.cpp(24): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  All 270 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  vscpp.vcxproj -> E:\Dropbox\personal\advent2016\day6_Rep_code\vscpp\Release\vscpp.exe
+  vscpp.vcxproj -> E:\Dropbox\personal\advent2016\day6_Rep_code\vscpp\Release\vscpp.pdb (Full PDB)
