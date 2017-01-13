@@ -5,44 +5,46 @@
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 
-#include <sys/time.h>
-typedef unsigned long long timestamp_t;
+using namespace std;
+using namespace std::chrono;
 
-static timestamp_t
-get_timestamp ()
-{
-  struct timeval now;
-  gettimeofday (&now, NULL);
-  return  now.tv_usec + (timestamp_t)now.tv_sec * 1000000;
-}
-
-int main(){
-    using namespace std;
-    timestamp_t t0 = get_timestamp();
+void function(){
+    int num_tri = 0;
     string line;
     string item;
-    int count = 0;
     ifstream f ("input.txt");
+    vector<int> values(3, 0);
     if (f.is_open()){
+        stringstream ssin;
         while(getline(f, line)){
-            vector<int> values;
-            std::stringstream ssin(line);
-            while (ssin.good()){
+            ssin << line;
+            for (int i = 0; i < 3; i++){
                 ssin >> item;
-                values.push_back(stoi(item));
+                values[i] = stoi(item);
             }
             sort(values.begin(), values.end());
             if (values[0] + values[1] > values[2]){
-                count++;
+                num_tri++;
             }
+            ssin.clear();
         }
         f.close();
+        cout << num_tri << endl;
     } else {
         cout << "Can not open file";
     }
-    cout << count << endl;
-    timestamp_t t1 = get_timestamp();
-    double secs = (t1 - t0) / 1000000.0L;
-    cout << secs << " seconds" <<endl;
+}
+
+int main()
+{
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    function();
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+
+    cout << duration << endl;
+    return 0;
 }

@@ -1,18 +1,23 @@
-def run():
+import re
+
+def count(data):
     n = 0
-    j = 0
-    with open("input.txt") as f:
-        values = [[],[],[]]
-        for line in f.readlines():
-            for i in range(3):
-                values[i].append(int(line[i*5:(i+1)*5]))
-            j += 1
-            if j == 3:
-                for i in range(3):
-                    items = sorted(values[i])
-                    if (items[0] + items[1] > items[2]):
-                        n += 1
-                values = [[],[],[]]
-                j = 0
-    # print(n)
+    values = [int(i) for i in re.findall(r"(\d+)", data)]
+    for i in xrange(0, len(values), 9):
+        for j in xrange(0, 3):
+            a, b, c = sorted(values[i+j:i+j+9:3])
+            if (a + b > c):
+                n += 1
+    return n
+
+def load(path=""):
+    with open(path + "input.txt") as f:
+        data = f.read()
+    return data
+
+def run(path=""):
+    data = load(path)
+    return count(data)
 #983
+if __name__ == "__main__":
+    print(run())

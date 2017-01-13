@@ -1,11 +1,19 @@
-def run():
-    n = 0
-    with open("input.txt") as f:
+import re
 
+def compare(line):
+    a, b, c = sorted([int(i) for i in re.findall(r"(\d+)", line)])
+    if (a + b > c):
+        return 1
+    else:
+        return 0
+
+def run(path=""):
+    n = 0
+    with open(path + "input.txt") as f:
         for line in f.readlines():
-            items = sorted([int(line[:5]), int(line[5:10]), int(line[10:])])
-            if (items[0] + items[1] > items[2]):
-                n += 1
-    # print(n)
+                n += compare(line)
+    return n
+
 #983
-# run()
+if __name__ == "__main__":
+    print(run())
