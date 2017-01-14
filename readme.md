@@ -9,7 +9,7 @@ Run multible times to get an average but allowed to return to idle after each
  TODO: Looking through these the main improvement I need to make with with my
  string/char handling. Day6 for example, python is considerably faster than c++.
 
-| Day     |  answer | Python  |   pypy   |  C++11  |  C++11 -O2  |
+| Day     |  Answer | Python  |   pypy   |  C++11  |  C++11 -O2  |
 | ------- | ------- |-------- |  ------  | ------- | ----------- |
 | Day 1-1 |    278  | \/  \/  |  \/  \/  | 0.4 msec  | 0.4 msec  |
 | Day 1-2 |    161  | 18 msec |  23 msec | 5 msec  | 0.8 msec|
