@@ -1,6 +1,6 @@
 import re
 
-def search(teststring):
+def search_string(teststring):
     for i in range(len(teststring)-3):
         a = teststring[i]
         b = teststring[i+1]
@@ -9,21 +9,27 @@ def search(teststring):
             return True
     return False
 
-def run():
-    n = 0
-    with open('input.txt') as f:
-        for line in f:
-            brackets = []
-            passed = []
-            pos = 0
-            for m in re.split("[\[\]]", line.strip()):
-                if pos%2 != 0:
-                    brackets.append(search(m))
-                else:
-                    passed.append(search(m))
+def search_line(line):
+    out_brackets = []
+    in_brackets = []
+    pos = 0
+    for m in re.split("[\[\]]", line.strip()):
+        if pos%2 != 0:
+            out_brackets.append(search_string(m))
+        else:
+            in_brackets.append(search_string(m))
+        pos += 1
+    if True in in_brackets and True not in out_brackets:
+        return 1
+    else:
+        return 0
 
-                pos += 1
-            if True in passed and True not in brackets:
-                n += 1
-    print(n)
-# run()
+def run(path =""):
+    n = 0
+    with open(path + 'input.txt') as f:
+        for line in f:
+            n += search_line(line)
+    return n
+
+if __name__ == "__main__":
+    print(run())

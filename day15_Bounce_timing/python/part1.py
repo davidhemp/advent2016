@@ -8,16 +8,16 @@ class Disc(object):
     def position(self, time):
         return (time+self.start)%self.no_positions
 
-def run():
+def run(filename="input.txt"):
     rgx = r'\s(\d+)'
     discs = []
-    with open('input.txt') as f:
+    with open(filename) as f:
         for line in f:
             m = re.findall(rgx, line)
             discs.append(Disc(m))
 
     #part2 adds another disc
-    # discs.append(Disc([7, 11, 0]))
+    # discs.append(Disc([11, 0]))
     height = len(discs)
     time = 0
     while height > 0:
@@ -29,5 +29,7 @@ def run():
             else:
                 height -= 1
                 time += 1
-    print(time - len(discs) - 1)
-run()
+    return (time - len(discs) - 1)
+
+if __name__ == "__main__":
+    print(run())

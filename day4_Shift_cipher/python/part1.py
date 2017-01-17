@@ -1,27 +1,29 @@
 from operator import itemgetter
 import re
-import string
 
-def run():
+def search_line(line, count, sector_sum):
+    regex = r'([a-z-]+)(\d+)\[(\w+)\]'
+    for name, sector_id, checksum in re.findall(regex, line):
+        letters = sorted(set(name.replace('-', '')))
+        count_letters = [[l, name.count(l)] for l in letters]
+        count_letters.sort(key=itemgetter(1), reverse=True)
+        built_checksum = ""
+        # '+' is faster than join
+        for c in count_letters[:5]:
+            built_checksum += c[0]
+        # built_checksum = "".join(c[0] for c in count_letters[:5])
+        if built_checksum == checksum:
+            count += 1
+            sector_sum += int(sector_id)
+        return count, sector_sum
+
+def run(path=""):
     n = 0
     sector_sum = 0
-    regex = r'([a-z-]+)(\d+)\[(\w+)\]'
-    with open("input.txt") as f:
-        for name, sector_id, checksum in re.findall(regex, f.read()):
-            letters = sorted(set(name.replace('-', '')))
-            count_letters = []
-            for l in letters:
-                count_letters.append([l, name.count(l)])
-            count_letters.sort(key=itemgetter(1), reverse=True)
-            # built_checksum = "".join(c for c,n in count_letters)
-            #Pre-defined is faster than post selected
-            built_checksum = count_letters[0][0] + \
-                             count_letters[1][0] + \
-                             count_letters[2][0] + \
-                             count_letters[3][0] + \
-                             count_letters[4][0]
-            if built_checksum == checksum:
-                n += 1
-                sector_sum += int(sector_id)
-    print(n, sector_sum)
-run()
+    with open(path + "input.txt") as f:
+        for line in f:
+            n, sector_sum = search_line(line, n, sector_sum)
+    return n, sector_sum
+
+if __name__ == "__main__":
+    print(run())

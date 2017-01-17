@@ -1,19 +1,21 @@
-def run():
+def run(filename = "input.txt"):
     letters = [[] for i in range(8)]
-    with open("input.txt") as f:
+    with open(filename) as f:
         for line in f:
             for c,e in zip(line.strip(), letters):
                 e.append(c)
 
-    old_count = 1000
-    final_word = ['-' for i in range(8)]
-    for col,n in zip(letters, range(8)):
+    final_word = ""
+    for col in letters:
         letter_set = set(col)
+        old_count = 1000
         for l in letter_set:
             new_count = col.count(l)
             if new_count < old_count:
-                final_word[n] = l
+                f_l = l
                 old_count = new_count
-        old_count = 1000
-    print(final_word)
-run()
+        final_word += f_l
+    return final_word
+
+if __name__ == "__main__":
+    print(run())
