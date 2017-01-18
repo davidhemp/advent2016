@@ -15,22 +15,22 @@ Run multible times to get an average but allowed to return to idle after each
 | Day 1-2 |    161  | 18 msec |  23 msec | 5 msec  | 0.8 msec|
 | Day 2-1 |  47978  |-------- |  ------  | 0.2 msec | 0.2 msec |
 | Day 2-2 |  659AD  |-------- |  ------  | 10 msec | 1.8 msec |
-| Day 3-1 |    983  | 7 msec  |  3 msec  |  5 msec  | 4.5 msec |
+| Day 3-1 |    983  |  7 msec |  3 msec  |  5 msec  | 4.5 msec |
 | Day 3-2 |   1836  | 12 msec |  4 msec  |  9 msec  | 7 msec |
 | Day 4-1 | 361724  | 18 msec | 11 msec  | ------- | ------- |
 | Day 4-2 |    482  | 13 msec | 6 msec | ------- | ------- |
 | Day 5-1 | 1a3099aa|  37 sec |  ------  | 11 sec | 11 sec |
 | Day 5-2 | 694190cd|  58 sec |  ------  | 20 sec | 23 msec |
-| Day 6-1 | umejzgdw| 2 msec  |  ------  | 12 msec | 0.9 msec |
-| Day 6-2 | aovueakv| 2 msec  |  ------  | 13 msec | 1.7 msec |
-| Day 7-1 |    118  |-------- |  ------  | 100 msec | 40 msec |
-| Day 7-2 |    260  |-------- |  ------  | -------- | ------- |
-| Day 8-1 |    110  |-------- |  ------  | \/ \/ | \/ \/ |
-| Day 8-2 |ZJHRKCPLYJ|-------- |  ------  | 8 msec | 3  msec |
+| Day 6-1 | umejzgdw|  2 msec |  ------  | 12 msec | 0.9 msec |
+| Day 6-2 | aovueakv|  2 msec |  ------  | 13 msec | 1.7 msec |
+| Day 7-1 |    118  |  6 msec |  ------  | 100 msec | 40 msec |
+| Day 7-2 |    260  |  4 msec |  ------  | -------- | ------- |
+| Day 8-1 |    110  | \/  \/ |  \/  \/ | \/ \/ | \/ \/ |
+| Day 8-2 |ZJHRKCPLYJ| 4.5 msec|  2 msec  | 8 msec | 3  msec |
 | Day 9-1 |  74532  |-------- |  ------  | 1 msec | 0.7 msec |
 | Day 9-2 |         |-------- |  ------  | ------- | -------- |
-| Day 10-1 |   157  | -------- |  ------  | MISSING | MISSING |
-| Day 10-2 |  1085  | -------- |  ------  | MISSING | MISSING |
+| Day 10-1 |   157  |  \/ \/  |  \/ \/   |  MISSING | MISSING |
+| Day 10-2 |  1085  |  6 ms   |  16 ms   |  MISSING | MISSING |
 | Day 11-1 |        | -------- |  ------  |  TBC    |  TBC   |
 | Day 11-2 |        | -------- |  ------  |  TBC    |  TBC   |
 | Day 12-1 | 318020 | -------- |  ------  | 1.2 sec | 1.1 sec |
@@ -43,5 +43,5 @@ Run multible times to get an average but allowed to return to idle after each
 | Day 15-2 |3903937 | 1.3 sec  |  100 msec  |  130 msec | 30 msec |
 | Day 16-1 |01110011101111011| 0.2 msec |0.1 msec| ------ | ------ |
 | Day 16-2 |11001111011000111| 21.2 sec  |5 sec   | ------ | ------ |
-| Day 17-1 |RDRLDRDURD| 0.2 msec |0.1 msec| ------ | ------ |
-| Day 17-2 |   596  |  500 msec  |5 sec   | ------ | ------ |
+| Day 17-1 |RDRLDRDURD| 0.2 msec | 0.2 msec  | ------ | ------ |
+| Day 17-2 |   596  |  300 msec  |  340 msec | ------ | ------ |
