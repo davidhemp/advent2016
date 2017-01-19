@@ -1,13 +1,25 @@
 import unittest
 
 from python import part1 as d2p1
-# from python import part2 as d2p2
+from python import part2 as d2p2
 
 class TestDay2(unittest.TestCase):
     def test_part1(self):
         input_string = ["ULL", "RRDDD", "LURDL", "UUUUD"]
         assert_string = "1985"
         self.assertEqual(d2p1.move(input_string), assert_string)
+
+    def test_part2(self):
+        input_string = ["ULL", "RRDDD", "LURDL", "UUUUD"]
+        assert_list = [[1, 3], [3, 5], [3, 4], [3, 2]]
+        assert_string = "5DB3"
+        x = 1
+        y = 3
+        test_list = []
+        for i in input_string:
+            x, y = d2p2.move(i, x, y)
+            test_list.append([x,y])
+        self.assertEqual(str(test_list), str(assert_list))
 
     #To check that any future changes still give the now known solution
     def test_answers(self):
@@ -17,22 +29,8 @@ class TestDay2(unittest.TestCase):
         else:
             path = "day2_Keypad/python/"
         self.assertEqual(d2p1.run(path=path), "47978")
-    # def test_part2(self):
-    #     input_string = "101 301 501\n102 302 502\n103 303 503\n"
-    #     input_string += "201 401 601\n202 402 602\n203 403 603\n"
-    #     self.assertEqual(d3p2.count(input_string), 6)
-    #     input_string = "01 01 01\n102 302 502\n103 303 503\n"
-    #     input_string += "01 01 01\n202 402 602\n203 403 603\n"
-    #     self.assertEqual(d3p2.count(input_string), 0)
-    #
-    # def test_answers(self):
-    #     import os
-    #     if "day3_Triangles" in os.getcwd():
-    #         path = "python/"
-    #     else:
-    #         path = "day3_Triangles/python/"
-    #     self.assertEqual(d3p1.run(path=path), 983)
-    #     self.assertEqual(d3p2.run(path=path), 1836)
+        self.assertEqual(d2p2.run(path=path), "659AD")
+
 
 def main():
     unittest.main()
