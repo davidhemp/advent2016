@@ -6,8 +6,7 @@ from python import part2 as d6p2
 
 # md5 hashs takes a while in python
 class TestDay6(unittest.TestCase):
-    def __init__(self, args):
-        super(TestDay6,self).__init__(args)
+    def setUp(self):
         if "day6_Rep_code" in os.getcwd():
             self.path = "python/"
         else:
@@ -23,7 +22,7 @@ class TestDay6(unittest.TestCase):
     def test_answers(self):
         self.assertEqual(d6p1.run(self.path+"input.txt"), "umejzgdw")
         self.assertEqual(d6p2.run(self.path+"input.txt"), "aovueakv")
-        
+
 def main():
     unittest.main()
 

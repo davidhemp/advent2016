@@ -35,6 +35,7 @@ def load_chips(filename, bots, outputs):
 
 def enable_flow(bots, outputs, chip_count):
     run = True
+    from_61_to_17 = 0
     while chips_at_outputs(outputs) < chip_count:
         run = False
         del_keys = []
@@ -67,5 +68,5 @@ def run(filename="input.txt"):
 
 if __name__ == "__main__":
     outputs, from_61_to_17 = run()
-    for key in outputs:
-        print(outputs[key].number, outputs[key].chips)
+    print(outputs[0].chips[0]*outputs[1].chips[0]*outputs[2].chips[0])
+    print(from_61_to_17)
