@@ -26,12 +26,12 @@ void run(){
     // ifstream f ("testinput.txt");
     ifstream f ("input.txt");
     if (f.is_open()){
-        int room_sum = 0;
         string line;
         smatch match;
         regex rgx("([a-z-]+)(\\d+)\\[(\\w+)\\]");
         set<Letter> letters;
-        while(getline(f, line)){
+        bool run = true;
+        while(getline(f, line) && run){
             letters.clear();
             if (regex_search(line, match, rgx)){
                 string s = match[1].str().c_str();
@@ -53,12 +53,26 @@ void run(){
                     ++it;
                 }
                 if (csum_match){
-                    room_sum += stoi(match[2]);
+                    int shift = stoi(match[2]);
+                    string room_name;
+                    for (int i = 0; i < s.size(); ++i){
+                        if (s[i] != '-'){
+                            int t = ((int)s[i] + shift - 97)%26;
+                            room_name += (char)(t+97);
+                            // cout << s[i] << ": " << (int)s[i] << " -> ";
+                            // cout << t << ": " << (char)(t + 97) << endl;
+                        } else {
+                            room_name += ' ';
+                        }
+                    }
+                    if (room_name.find("north") != string::npos){
+                        cout << match[2] << ": " << room_name << endl;
+                        run = false;
+                    }
                 }
             }
         }
         f.close();
-        cout << room_sum << endl;
     } else {
         cout << "Can not open file";
     }
