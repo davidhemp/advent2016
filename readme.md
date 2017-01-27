@@ -33,7 +33,7 @@ Run multible times to get an average but allowed to return to idle after each
 | Day 7-2 |    260  | 40 msec |  8 msec  | -------- |   ------- |
 | Day 8-1 |    110  | \/  \/  |  \/  \/  | \/ \/    |   \/ \/   |
 | Day 8-2 |ZJHRKCPLYJ| 4.5 msec|  2 msec |  8 msec  |   3  msec |
-| Day 9-1 |  74532  |-------- |  ------  |  1 msec  |  0.7 msec |
+| Day 9-1 |  74532  |  2 msec* |   7 msec | 0.4 msec |  0.7 msec |
 | Day 9-2 |         |-------- |  ------  | -------  |  -------- |
 | Day 10-1 |   157  |  \/ \/  |  \/ \/   |  MISSING |   MISSING |
 | Day 10-2 |  1085  |  6 ms   |  16 ms   |  MISSING |   MISSING |

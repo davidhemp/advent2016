@@ -1,7 +1,6 @@
 import unittest
 
 from python import part1 as d8p1
-# from python import part2 as d7p2
 
 # md5 hashs takes a while in python
 class TestDay8(unittest.TestCase):
