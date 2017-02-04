@@ -3,7 +3,7 @@ import unittest
 from python import part1 as d18p1
 from python import part2 as d18p2
 
-class TestDay16(unittest.TestCase):
+class TestDay18(unittest.TestCase):
 
     def test_part1_generate(self):
         input_str = ".^^.^.^^^^"

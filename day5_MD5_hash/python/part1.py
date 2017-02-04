@@ -9,7 +9,7 @@ def run(input_string="uqwqemis"):
     keys = []
     while len(rtn) < 8:
         test_hash = hash(input_string + str(n))
-        if test_hash[:5] == "00000":
+        if test_hash.startswith("0" * 5):
             keys.append(n)
             rtn += test_hash[5]
         n += 1

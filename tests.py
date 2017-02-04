@@ -1,6 +1,5 @@
 import unittest
 
-
 #slow tests are commented out
 from day1_Taxicab.tests import *
 from day2_Keypad.tests import *
@@ -15,8 +14,11 @@ from day10_Flow_network.tests import *
 
 # from day12_ASM.tests import *
 # from day13_Cubicle_map_BFS.tests import *
-from day16_Dragon_Checksum.tests import *
 from day15_Bounce_timing.tests import *
+from day16_Dragon_Checksum.tests import *
+# from day17_Hashed_path.tests import *
+from day18_Traps.tests import *
+from day19_White_elephant.tests import *
 
 def main():
     unittest.main()

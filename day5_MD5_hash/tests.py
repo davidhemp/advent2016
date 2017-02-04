@@ -29,8 +29,8 @@ class TestDay5(unittest.TestCase):
 
     #To check that any future changes still give the now known solution
     def test_answers(self):
-        self.assertEqual(d1p1.run("uqwqemis")[0], "1a3099aa")
-        self.assertEqual(d1p2.run("uqwqemis")[0], "694190cd")
+        self.assertEqual(d5p1.run("uqwqemis")[0], "1a3099aa")
+        self.assertEqual(d5p2.run("uqwqemis")[0], "694190cd")
 
 
 def main():
