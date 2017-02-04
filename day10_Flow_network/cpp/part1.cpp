@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <sstream>
+#include <algorithm>
 #include <vector>
 #include <regex>
 #include <chrono>
@@ -10,38 +10,77 @@
 using namespace std;
 using namespace std::chrono;
 struct bot{
-    int number;
+    int number=0;
     vector<int> chips;
-    int high;
-    int low;
+    bot *low;
+    bot *high;
 };
 
 int run(){
-    ifstream txtFile("testinput.txt");
+    ifstream txtFile("input.txt");
     if(txtFile.is_open()){
-        int num = 0;
+        int chip_count = 0;
         vector<bot> bots(220);
-        for (int i =0; i<220; ++i){
+        for (int i=0; i < bots.size(); ++i){
             bots[i].number = i;
         }
+        vector<bot> outputs(21);
         string line;
         smatch match;
-        regex straightRGX("value (\\d+) goes to bot (\\d+)");
-        regex conditionalRGX("bot (\\d+) gives low to (output|bot) (\\d+) and high to (output|bot) (\\d+)");
-        while(txtFile.good()){
-                // Line editting
+        regex loadRGX("value (\\d+) goes to bot (\\d+)");
+        regex flowRGX("(\\d+).*(bot|output) (\\d+).*(bot|output) (\\d+)");
+        while(!txtFile.eof()){ //build network
                 getline(txtFile, line);
-                if (regex_match (line, match, straightRGX)){
-                    cout << match[1] << " goes to " << match[2] << endl;
-                } else if (regex_match (line, match, conditionalRGX)){
+                if (regex_search (line, match, loadRGX)){
+                    bots[stoi(match[2])].chips.push_back(stoi(match[1]));
+                    chip_count++;
+                } else if (regex_search (line, match, flowRGX)){
+                    bot *selected_bot = &bots[stoi(match[1])];
                     if (match[2].compare("bot") == 0){
-                        bots[stoi(match[1])].high = stoi(match[3]);
-                        bots[stoi(match[1])].low = stoi(match[4]);
+                        selected_bot->low = &bots[stoi(match[3])];
+                    } else {
+                        selected_bot->low = &outputs[stoi(match[3])];
                     }
-
+                    if (match[4].compare("bot") == 0){
+                        selected_bot->high = &bots[stoi(match[5])];
+                    } else {
+                        selected_bot->high = &outputs[stoi(match[5])];
+                    }
                 }
             }
         txtFile.close();
+        // let network propogate
+        int output_count = 0;
+        while (output_count < chip_count){
+            //for some reason I couldn't get the iter to work?
+            for (int b=0; b<bots.size(); ++b){
+                bot *b_t = &bots[b];
+                if (b_t->chips.size() == 2){
+                    auto maxMin =
+                        minmax_element(b_t->chips.begin(),b_t->chips.end());
+                    if (*maxMin.first == 17 && *maxMin.second == 61){
+                        cout << b_t->number << endl;
+                    }
+                    b_t->low->chips.push_back(*maxMin.first);
+                    b_t->high->chips.push_back(*maxMin.second);
+                    b_t->chips.push_back(0);
+                }
+            }
+            output_count = 0;
+            for (auto o:outputs){
+                output_count += o.chips.size();
+            }
+        }
+        int total = 1;
+
+        for (int i = 0; i<outputs.size(); ++i){
+            cout << i << ": " <<outputs[i].chips[0] << endl;
+            if (i == 0 || i == 1 ||i == 2){
+                total *= outputs[i].chips[0];
+            }
+        }
+        cout << total << endl;
+
     }
 }
 
@@ -51,8 +90,8 @@ int main()
     run();
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>( t2 - t1 ).count();
+    auto duration = duration_cast<milliseconds>( t2 - t1 ).count();
 
-    cout << duration << endl;
+    cout << duration << " milliseconds" << endl;
     return 0;
 }
