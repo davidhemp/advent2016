@@ -16,9 +16,17 @@ class TestDay20(unittest.TestCase):
         test_list = [[0, 2], [4,7], [5, 8]]
         self.assertEqual(d20p1.find_min(test_list), 3)
 
+    def test_part2_count(self):
+        test_list = [[0, 20], [21, 40], [32, 50], [34, 50],
+                     [54, 66], [70, 80], [82, 98]]
+        self.assertEqual(d20p2.find_allowed(test_list, 100), 9)
+
+    def test_part2_full(self):
+        self.assertEqual(d20p2.run(self.path, "testinput.txt", 2**8), 46)
+
     def test_answers(self):
         self.assertEqual(d20p1.run(self.path), 22887907)
-        self.assertEqual(d20p2.run(self.path), 20008491)
+        self.assertEqual(d20p2.run(self.path), 109)
 
 def main():
     unittest.main()
