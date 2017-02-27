@@ -13,7 +13,7 @@ class TestDay22(unittest.TestCase):
             self.path = "day22_Defrag/python/"
 
     def test_part1(self):
-        self.assertEqual(d22p1.run(self.path + "testinput.txt"), 18)
+        self.assertEqual(d22p1.run(self.path + "testinput.txt"), 7)
 
     def test_answers(self):
         self.assertEqual(d22p1.run(self.path + "input.txt"), 901)

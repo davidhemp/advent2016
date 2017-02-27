@@ -1,5 +1,4 @@
 def process(regs, pos, cmd, nums):
-    print(cmd, nums)
     if cmd == "cpy":
         try:
             regs[nums[1]] = regs[nums[0]]
@@ -19,8 +18,8 @@ def process(regs, pos, cmd, nums):
     return pos, regs
 
 
-def run(filename="day23_test.txt"):
-    regs = {'a':0, 'b':0, 'c':0, 'd':0}
+def run(filename="input.txt"):
+    regs = {'a':0, 'b':0, 'c':1, 'd':0}
     with open(filename) as f:
         cmd_list = []
         for line in f:

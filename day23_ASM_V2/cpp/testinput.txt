@@ -3,3 +3,7 @@ inc a
 inc a
 dec a
 jnz a 2
+dec a
+jnz b -5
+inc b
+jnz b -5

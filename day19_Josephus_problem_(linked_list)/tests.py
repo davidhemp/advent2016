@@ -1,7 +1,7 @@
 import unittest
 
 from python import part1 as d19p1
-# from python import part2 as d19p2
+from python import part2 as d19p2
 
 class TestDay19(unittest.TestCase):
 
@@ -11,12 +11,12 @@ class TestDay19(unittest.TestCase):
         self.assertEqual(d19p1.propagate(13), 11)
         self.assertEqual(d19p1.propagate(9), 3)
 
-    # def test_answers(self):
-    #     input_str = ".^^..^...^..^^.^^^.^^^.^^^^^^.^.^^^^.^^.^^^^^^."
-    #     input_str += "^...^......^...^^^..^^^.....^^^^^^^^^....^^...^^^^..^"
-    #     maze_map, test_int = d19p1.run(input_str, 40)
-    #     self.assertEqual(test_int, 2005)
-    #     self.assertEqual(d18p2.run(i = 400000), 20008491)
+    def test_part2_full(self):
+        self.assertEqual(d19p2.propagate(5), 2)
+
+    def test_answers(self):
+        self.assertEqual(d19p1.run(3004953), 1815603)
+        self.assertEqual(d19p2.run(3004953), 1410630)
 
 def main():
     unittest.main()

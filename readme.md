@@ -53,9 +53,11 @@ Run multible times to get an average but allowed to return to idle after each
 | Day 17-2 |    596 | 300 msec | 340 msec |         |           |
 | Day 18-1 |   2005 |   1 msec | 0.7 msec |  5 msec |  2.5 msec |
 | Day 18-2 |20008491|     12 s |    2.1 s |    16 s |   12.6 s  |
-| Day 19-1 |1815603 | 200 msec | 11 msec  |         |           |
-| Day 19-2 |        |          |          |         |           |
+| Day 19-1 |1815603 | 229 msec |  12 msec |         |           |
+| Day 19-2 |1410630 |   5.44 s |    0.9 s |         |           |
 | Day 20-1 |22887907|   2 msec | 1.9 msec |         |           |
 | Day 20-2 |    109 | 2.1 msec | 1.7 msec |         |           |
 | Day 21-1 |dgfaehcb| 0.5 msec | 0.2 msec |         |           |
 | Day 21-2 |fdhgacbe| 0.5 msec | 0.2 msec |         |           |
+| Day 22-1 |    901 | 123 msec | 4.6 msec |         |           |
+| Day 22-2 |    238 |  By Hand |          |         |           |

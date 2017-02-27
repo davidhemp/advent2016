@@ -1,6 +1,6 @@
 from operator import itemgetter
 
-def run(filename = "testinput.txt"):
+def run(filename = "input.txt"):
     lines = open(filename).readlines()
     used = []
     avail = []
@@ -12,7 +12,6 @@ def run(filename = "testinput.txt"):
     avail = sorted(avail)
     pairs = 0
     n = 0
-    fw = open('log.txt', 'w')
     for i in used:
         if i[0] > 0:
             if i[0] <= i[1]:
@@ -24,7 +23,6 @@ def run(filename = "testinput.txt"):
             except IndexError:
                 j += 1
             pairs += len(avail[j:])
-    fw.close()
     return pairs
 
 if __name__ == "__main__":
