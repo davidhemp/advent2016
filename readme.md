@@ -61,3 +61,7 @@ Run multible times to get an average but allowed to return to idle after each
 | Day 21-2 |fdhgacbe| 0.5 msec | 0.2 msec |         |           |
 | Day 22-1 |    901 | 123 msec | 4.6 msec |         |           |
 | Day 22-2 |    238 |  By Hand |          |         |           |
+| Day 23-1 |        |          |          |         |           |
+| Day 23-2 |        |          |          |         |           |
+| Day 24-1 |    430 | 123 msec |   ERROR  |         |           |
+| Day 24-2 |    700 | 123 msec |   ERROR  |         |           |

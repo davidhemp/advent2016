@@ -18,7 +18,10 @@ from day15_Bounce_timing.tests import *
 from day16_Dragon_Checksum.tests import *
 # from day17_Hashed_path.tests import *
 from day18_Traps.tests import *
-from day19_White_elephant.tests import *
+from day19_Josephus_problem.tests import *
+from day20_IP_ranges.tests import *
+from day21_Cypher.tests import *
+from day22_Defrag.tests import *
 
 def main():
     unittest.main()
